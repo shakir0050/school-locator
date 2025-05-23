@@ -51,12 +51,6 @@ app.post("/addSchool", (req, res) => {
         res.send("School Detail added!")
     });
 });
-
-// app.get("/listSchools", (req, res) => {
-//     res.render("getLocationForm.ejs");
-// });
-
-
 app.get("/listSchools", (req, res) => {
     const lat = req.query.latitude;
     const lng = req.query.longitude;
@@ -94,40 +88,6 @@ app.get("/listSchools", (req, res) => {
         res.render("listSchools.ejs", { schools: schoolsWithDistance });
     });
 });
-
-
-// // GET: List schools sorted by distance
-// app.get("/listSchools", (req, res) => {
-//     // const userLat = parseFloat(req.query.latitude);
-//     // const userLng = parseFloat(req.query.longitude);
-//     const userLat = parseFloat(req.query.latitude);
-//     const userLng = parseFloat(req.query.longitude);
-
-//     if (isNaN(userLat) || isNaN(userLng)) {
-//         return res.status(400).send("Please provide valid latitude and longitude.");
-//     }
-
-//     const q = `SELECT * FROM school`;
-//     connection.query(q, (err, schools) => {
-//         if (err) {
-//             console.log(err);
-//             return res.send("Error retrieving school data.");
-//         }
-
-//         const schoolsWithDistance = schools.map((school) => {
-//             const distance = calculateDistance(
-//                 userLat,
-//                 userLng,
-//                 school.latitude,
-//                 school.longitude
-//             );
-//             return { ...school, distance };
-//         });
-
-//         schoolsWithDistance.sort((a, b) => a.distance - b.distance);
-//         res.render("listSchools.ejs", { schools: schoolsWithDistance });
-//     });
-// });
 
 //(Optional) Render Add School Form
 app.get("/addSchool", (req, res) => {
